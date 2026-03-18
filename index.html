@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MidWest Design System v1.0</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'mw-ink': {
+              50:'#F7F7F8',100:'#EEEFF1',200:'#D9DBDF',300:'#B5B8C1',
+              400:'#8C909C',500:'#666B78',600:'#4D515C',700:'#353840',
+              800:'#1E2027',900:'#111318',950:'#09090B',
+            },
+            'mw-surface': {
+              DEFAULT:'#FFFFFF', soft:'#FAFAFA', muted:'#F4F4F5', border:'#E4E4E7',
+            },
+            'mw-primary': {
+              50:'#EEF2FF',100:'#E0E7FF',200:'#C7D2FE',300:'#A5B4FC',
+              400:'#818CF8',500:'#6366F1',600:'#4F46E5',700:'#4338CA',
+              800:'#3730A3',900:'#312E81',
+            },
+            'mw-accent': {
+              50:'#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FCD34D',
+              400:'#FBBF24',500:'#F59E0B',600:'#D97706',700:'#B45309',
+            },
+            'mw-success': { light:'#D1FAE5', DEFAULT:'#10B981', dark:'#065F46' },
+            'mw-danger':  { light:'#FEE2E2', DEFAULT:'#EF4444', dark:'#991B1B' },
+            'mw-warning': { light:'#FEF3C7', DEFAULT:'#F59E0B', dark:'#92400E' },
+          },
+          fontSize: {
+            '2xs': ['0.625rem', { lineHeight: '1rem' }],
+          },
+          borderRadius: {
+            'xs': '0.125rem',
+          },
+          boxShadow: {
+            'xs': '0 1px 2px 0 rgb(0 0 0 / 0.04)',
+            'glow-primary': '0 0 0 3px rgb(99 102 241 / 0.2)',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .code-block { background: #0F1117; color: #E5E7EB; border-radius: 0.75rem; padding: 1rem 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.6; overflow-x: auto; }
+    .code-block .token-class { color: #818CF8; }
+    .code-block .token-attr { color: #FCD34D; }
+    .code-block .token-str { color: #6EE7B7; }
+    .toc-link { display: block; padding: 0.35rem 0.75rem; font-size: 0.8rem; color: #666B78; border-radius: 0.375rem; transition: all 0.15s; }
+    .toc-link:hover { background: #F4F4F5; color: #111318; }
+    .toc-link.active { background: #EEF2FF; color: #4F46E5; font-weight: 500; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D9DBDF; border-radius: 99px; }
+    .section-anchor { scroll-margin-top: 80px; }
+    .preview-wrap { background: #FAFAFA; border: 1px solid #E4E4E7; border-radius: 0.75rem; padding: 2rem; }
+    .preview-wrap-dark { background: #111318; border: 1px solid #1E2027; border-radius: 0.75rem; padding: 2rem; }
+  </style>
+</head>
+<body class="bg-white text-[#111318] antialiased">
+
+<!-- Top nav -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-[#E4E4E7] px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <div class="w-8 h-8 bg-[#4F46E5] rounded-lg flex items-center justify-center">
+      <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"/></svg>
+    </div>
+    <span class="font-semibold text-base">MidWest Design System</span>
+    <span class="text-xs font-medium bg-[#EEF2FF] text-[#4F46E5] px-2 py-0.5 rounded-full">v1.0</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="HANDOVER.md" class="text-sm text-[#666B78] hover:text-[#111318] transition-colors">Docs</a>
+    <a href="https://github.com" class="inline-flex items-center gap-1.5 text-sm font-medium bg-[#09090B] text-white px-3 py-1.5 rounded-md hover:bg-[#1E2027] transition-colors">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<div class="flex">
+  <!-- TOC Sidebar -->
+  <aside class="w-56 shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto py-6 px-3 border-r border-[#E4E4E7] hidden lg:block">
+    <p class="text-[10px] font-semibold text-[#8C909C] uppercase tracking-widest px-3 mb-2">Foundation</p>
+    <nav class="space-y-0.5 mb-4">
+      <a href="#tokens" class="toc-link">Design Tokens</a>
+      <a href="#typography" class="toc-link">Typography</a>
+      <a href="#colors" class="toc-link">Color Palette</a>
+    </nav>
+    <p class="text-[10px] font-semibold text-[#8C909C] uppercase tracking-widest px-3 mb-2 mt-4">Components</p>
+    <nav class="space-y-0.5 mb-4">
+      <a href="#buttons" class="toc-link">Buttons</a>
+      <a href="#badges" class="toc-link">Badges</a>
+      <a href="#inputs" class="toc-link">Inputs &amp; Forms</a>
+      <a href="#cards" class="toc-link">Cards</a>
+      <a href="#lists" class="toc-link">Lists</a>
+      <a href="#tables" class="toc-link">Tables</a>
+    </nav>
+    <p class="text-[10px] font-semibold text-[#8C909C] uppercase tracking-widest px-3 mb-2 mt-4">Patterns</p>
+    <nav class="space-y-0.5">
+      <a href="#navigation" class="toc-link">Navigation</a>
+      <a href="#chat" class="toc-link">Chat Interface</a>
+      <a href="#layouts" class="toc-link">Layouts</a>
+      <a href="#dashboard" class="toc-link">AI Dashboard</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 min-w-0 max-w-4xl mx-auto px-8 py-12">
+
+    <!-- Hero -->
+    <div class="mb-16">
+      <div class="inline-flex items-center gap-2 text-xs font-medium text-[#4F46E5] bg-[#EEF2FF] px-3 py-1 rounded-full mb-4">
+        <span class="w-1.5 h-1.5 bg-[#4F46E5] rounded-full"></span>
+        Built with Tailwind CSS
+      </div>
+      <h1 class="text-5xl font-bold tracking-tight text-[#09090B] mb-4">MidWest<br/>Design System</h1>
+      <p class="text-lg text-[#666B78] max-w-lg">A clean, accessible component library for AI-powered products. Tokens, components, and patterns ready for Tailwind CSS.</p>
+      <div class="flex gap-3 mt-6">
+        <a href="#tokens" class="inline-flex items-center gap-2 px-4 py-2 bg-[#4F46E5] text-white text-sm font-medium rounded-lg hover:bg-[#4338CA] transition-colors">Get started</a>
+        <a href="HANDOVER.md" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#353840] text-sm font-medium rounded-lg border border-[#E4E4E7] hover:bg-[#F4F4F5] transition-colors">Dev handover docs</a>
+      </div>
+    </div>
+
+    <!-- ═══ TOKENS ═══ -->
+    <section id="tokens" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Design Tokens</h2>
+      <p class="text-sm text-[#666B78] mb-6">All values are defined as Tailwind theme extensions. Use CSS custom properties for runtime theming.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+          <p class="text-xs font-semibold text-[#8C909C] mb-2">Spacing base</p>
+          <p class="text-2xl font-bold text-[#09090B]">4px</p>
+          <p class="text-xs text-[#8C909C] mt-1">4pt grid system</p>
+        </div>
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+          <p class="text-xs font-semibold text-[#8C909C] mb-2">Border radius</p>
+          <p class="text-2xl font-bold text-[#09090B]">6px</p>
+          <p class="text-xs text-[#8C909C] mt-1">Default (md: 8px)</p>
+        </div>
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+          <p class="text-xs font-semibold text-[#8C909C] mb-2">Font family</p>
+          <p class="text-2xl font-bold text-[#09090B]">Inter</p>
+          <p class="text-xs text-[#8C909C] mt-1">Mono: JetBrains</p>
+        </div>
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+          <p class="text-xs font-semibold text-[#8C909C] mb-2">Transition</p>
+          <p class="text-2xl font-bold text-[#09090B]">200ms</p>
+          <p class="text-xs text-[#8C909C] mt-1">ease-in-out</p>
+        </div>
+      </div>
+
+      <pre class="code-block"><span class="token-class">/* tailwind.config.js — token reference */</span>
+<span class="token-attr">colors</span>: {
+  <span class="token-str">'mw-ink'</span>: { <span class="token-str">950</span>: <span class="token-str">'#09090B'</span>, <span class="token-str">900</span>: <span class="token-str">'#111318'</span>, <span class="token-str">800</span>: <span class="token-str">'#1E2027'</span> ... },
+  <span class="token-str">'mw-primary'</span>: { <span class="token-str">600</span>: <span class="token-str">'#4F46E5'</span>, <span class="token-str">500</span>: <span class="token-str">'#6366F1'</span> ... },
+  <span class="token-str">'mw-accent'</span>:  { <span class="token-str">500</span>: <span class="token-str">'#F59E0B'</span> ... },
+},
+<span class="token-attr">fontFamily</span>: { <span class="token-str">sans</span>: <span class="token-str">['Inter', 'system-ui']</span>, <span class="token-str">mono</span>: <span class="token-str">['JetBrains Mono']</span> },
+<span class="token-attr">borderRadius</span>: { <span class="token-str">DEFAULT</span>: <span class="token-str">'0.375rem'</span>, <span class="token-str">md</span>: <span class="token-str">'0.5rem'</span>, <span class="token-str">lg</span>: <span class="token-str">'0.75rem'</span>, <span class="token-str">xl</span>: <span class="token-str">'1rem'</span> },</pre>
+    </section>
+
+    <!-- ═══ TYPOGRAPHY ═══ -->
+    <section id="typography" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Typography</h2>
+      <p class="text-sm text-[#666B78] mb-6">Type scale built on Inter. Use semantic HTML elements (h1–h6) or utility classes directly.</p>
+      <div class="preview-wrap space-y-4">
+        <div class="flex items-baseline gap-4"><span class="text-5xl font-bold text-[#09090B]">Display</span><span class="text-xs text-[#8C909C] font-mono">text-5xl / font-bold / 3rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-4xl font-bold text-[#09090B]">Heading 1</span><span class="text-xs text-[#8C909C] font-mono">text-4xl / font-bold / 2.25rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-3xl font-semibold text-[#09090B]">Heading 2</span><span class="text-xs text-[#8C909C] font-mono">text-3xl / font-semibold / 1.875rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-2xl font-semibold text-[#09090B]">Heading 3</span><span class="text-xs text-[#8C909C] font-mono">text-2xl / font-semibold / 1.5rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-xl font-semibold text-[#09090B]">Heading 4</span><span class="text-xs text-[#8C909C] font-mono">text-xl / font-semibold / 1.25rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-base text-[#353840]">Body — The quick brown fox jumps over the lazy dog.</span><span class="text-xs text-[#8C909C] font-mono">text-base / 1rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-sm text-[#4D515C]">Small — Supporting text, descriptions, meta information.</span><span class="text-xs text-[#8C909C] font-mono">text-sm / 0.875rem</span></div>
+        <div class="flex items-baseline gap-4"><span class="text-xs text-[#666B78] uppercase tracking-wider font-semibold">LABEL / CAPTION</span><span class="text-xs text-[#8C909C] font-mono">text-xs uppercase tracking-wider</span></div>
+        <div class="flex items-baseline gap-4"><span class="font-mono text-sm text-[#4F46E5] bg-[#EEF2FF] px-1.5 py-0.5 rounded">inline code</span><span class="text-xs text-[#8C909C] font-mono">font-mono + bg-mw-primary-50</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ COLORS ═══ -->
+    <section id="colors" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Color Palette</h2>
+      <p class="text-sm text-[#666B78] mb-6">Six color families. Each used with <code class="font-mono text-xs bg-[#EEF2FF] text-[#4F46E5] px-1 rounded">bg-</code>, <code class="font-mono text-xs bg-[#EEF2FF] text-[#4F46E5] px-1 rounded">text-</code>, and <code class="font-mono text-xs bg-[#EEF2FF] text-[#4F46E5] px-1 rounded">border-</code> prefixes.</p>
+
+      <!-- Ink -->
+      <div class="mb-6">
+        <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">mw-ink (Neutrals)</p>
+        <div class="flex gap-1 flex-wrap">
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#F7F7F8] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#EEEFF1]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#D9DBDF]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#B5B8C1]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#8C909C]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#666B78]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4D515C]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#353840]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#1E2027]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#111318]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#09090B]"></div><span class="text-[10px] text-[#8C909C]">950</span></div>
+        </div>
+      </div>
+      <!-- Primary -->
+      <div class="mb-6">
+        <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">mw-primary (Indigo)</p>
+        <div class="flex gap-1 flex-wrap">
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#EEF2FF] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#E0E7FF]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#C7D2FE]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#A5B4FC]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#818CF8]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#6366F1]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4F46E5]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4338CA]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#3730A3]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#312E81]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
+        </div>
+      </div>
+      <!-- Accent + Semantic -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div>
+          <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Accent</p>
+          <div class="space-y-1">
+            <div class="h-8 rounded-lg bg-[#FEF3C7]"></div>
+            <div class="h-8 rounded-lg bg-[#F59E0B]"></div>
+            <div class="h-8 rounded-lg bg-[#D97706]"></div>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Success</p>
+          <div class="space-y-1">
+            <div class="h-8 rounded-lg bg-[#D1FAE5]"></div>
+            <div class="h-8 rounded-lg bg-[#10B981]"></div>
+            <div class="h-8 rounded-lg bg-[#065F46]"></div>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Danger</p>
+          <div class="space-y-1">
+            <div class="h-8 rounded-lg bg-[#FEE2E2]"></div>
+            <div class="h-8 rounded-lg bg-[#EF4444]"></div>
+            <div class="h-8 rounded-lg bg-[#991B1B]"></div>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Warning</p>
+          <div class="space-y-1">
+            <div class="h-8 rounded-lg bg-[#FEF3C7]"></div>
+            <div class="h-8 rounded-lg bg-[#F59E0B]"></div>
+            <div class="h-8 rounded-lg bg-[#92400E]"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BUTTONS ═══ -->
+    <section id="buttons" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Buttons</h2>
+      <p class="text-sm text-[#666B78] mb-6">Five variants, three sizes. All have focus rings and disabled states.</p>
+      <div class="preview-wrap space-y-6">
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">Variants</p>
+          <div class="flex flex-wrap gap-3 items-center">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">Primary</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded-lg hover:bg-[#E4E4E7] transition-colors">Secondary</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#353840] rounded-lg hover:bg-[#F4F4F5] transition-colors">Ghost</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded-lg hover:bg-[#1E2027] transition-colors">Dark</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#EF4444] text-white rounded-lg hover:bg-[#DC2626] transition-colors">Danger</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">Sizes</p>
+          <div class="flex flex-wrap gap-3 items-center">
+            <button class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-[#4F46E5] text-white rounded-md hover:bg-[#4338CA] transition-colors">Small</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">Default</button>
+            <button class="inline-flex items-center gap-2 px-6 py-3 text-base font-medium bg-[#4F46E5] text-white rounded-xl hover:bg-[#4338CA] transition-colors">Large</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">With icons</p>
+          <div class="flex flex-wrap gap-3 items-center">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              Create workflow
+            </button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded-lg hover:bg-[#E4E4E7] transition-colors">
+              <svg class="w-4 h-4 text-[#666B78]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Download
+            </button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded-lg hover:bg-[#1E2027] transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">States</p>
+          <div class="flex flex-wrap gap-3 items-center">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg opacity-40 cursor-not-allowed">Disabled</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg ring-2 ring-offset-2 ring-[#6366F1]">Focused</button>
+          </div>
+        </div>
+      </div>
+      <pre class="code-block mt-4"><span class="token-class">&lt;!-- Primary button --&gt;</span>
+<span class="token-attr">&lt;button</span> class=<span class="token-str">"inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+         bg-mw-primary-600 text-white rounded-lg hover:bg-mw-primary-700
+         transition-colors focus-visible:ring-2 focus-visible:ring-mw-primary-500"</span><span class="token-attr">&gt;</span>
+  Primary
+<span class="token-attr">&lt;/button&gt;</span></pre>
+    </section>
+
+    <!-- ═══ BADGES ═══ -->
+    <section id="badges" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Badges &amp; Tags</h2>
+      <p class="text-sm text-[#666B78] mb-6">Compact indicators for status, categories, and metadata.</p>
+      <div class="preview-wrap space-y-4">
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">Status badges</p>
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#EEF2FF] text-[#4F46E5] rounded-full">Primary</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#FEF3C7] text-[#B45309] rounded-full">Accent</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#D1FAE5] text-[#065F46] rounded-full">
+              <span class="w-1.5 h-1.5 bg-[#10B981] rounded-full"></span>Active
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#FEE2E2] text-[#991B1B] rounded-full">Error</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#F4F4F5] text-[#666B78] rounded-full">Neutral</span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-[#FEF3C7] text-[#92400E] rounded-full">
+              <span class="w-1.5 h-1.5 bg-[#F59E0B] rounded-full"></span>Beta
+            </span>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">Source citations (AI pattern)</p>
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium bg-[#F4F4F5] text-[#666B78] rounded cursor-pointer hover:bg-[#E4E4E7] transition-colors">MINUTES OF MEETING...</span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium bg-[#F4F4F5] text-[#666B78] rounded cursor-pointer hover:bg-[#E4E4E7] transition-colors">PROJECT AS MOBBIN</span>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-[#8C909C] mb-3 font-medium">Filter chips</p>
+          <div class="flex flex-wrap gap-2 items-center">
+            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#09090B] text-white rounded-full">All</button>
+            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-white text-[#353840] border border-[#E4E4E7] rounded-full hover:bg-[#F4F4F5] transition-colors">Customer success</button>
+            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-white text-[#353840] border border-[#E4E4E7] rounded-full hover:bg-[#F4F4F5] transition-colors">Engineering</button>
+            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-white text-[#353840] border border-[#E4E4E7] rounded-full hover:bg-[#F4F4F5] transition-colors">Marketing</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INPUTS ═══ -->
+    <section id="inputs" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Inputs &amp; Forms</h2>
+      <p class="text-sm text-[#666B78] mb-6">Clean form controls with consistent focus states.</p>
+      <div class="preview-wrap grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Default input</label>
+          <input type="text" placeholder="Type something..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Search input</label>
+          <div class="relative">
+            <svg class="absolute left-3 top-2.5 w-4 h-4 text-[#8C909C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+            <input type="search" placeholder="Search integrations..." class="w-full pl-9 pr-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Error state</label>
+          <input type="text" value="Invalid input" class="w-full px-3 py-2 text-sm bg-white border border-[#EF4444] rounded-lg text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#EF4444] focus:border-transparent" />
+          <p class="text-xs text-[#EF4444] mt-1.5">This field is required</p>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Disabled</label>
+          <input type="text" placeholder="Not editable" disabled class="w-full px-3 py-2 text-sm bg-[#F4F4F5] border border-[#E4E4E7] rounded-lg text-[#8C909C] cursor-not-allowed" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Select</label>
+          <select class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent appearance-none cursor-pointer">
+            <option>All categories</option>
+            <option>Engineering</option>
+            <option>Marketing</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-[#353840] mb-1.5">Textarea</label>
+          <textarea rows="3" placeholder="Write a message..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent resize-none transition-shadow"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CARDS ═══ -->
+    <section id="cards" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Cards</h2>
+      <p class="text-sm text-[#666B78] mb-6">Flexible containers for content, data, and interactive elements.</p>
+      <div class="preview-wrap grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Default card -->
+        <div class="bg-white rounded-xl border border-[#E4E4E7] shadow-sm p-5">
+          <div class="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h5 class="font-semibold text-[#111318] text-sm mb-1">Prepare me for meetings</h5>
+          <p class="text-xs text-[#666B78] leading-relaxed">Before each meeting, you'll receive a concise pre-read with key context.</p>
+          <p class="text-xs text-[#8C909C] mt-3">Used 0 times</p>
+        </div>
+        <!-- Elevated card -->
+        <div class="bg-white rounded-xl border border-[#E4E4E7] shadow-md hover:shadow-lg transition-shadow p-5 cursor-pointer">
+          <div class="w-10 h-10 bg-[#FEF3C7] rounded-xl flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-[#D97706]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h5 class="font-semibold text-[#111318] text-sm mb-1">Draft email replies</h5>
+          <p class="text-xs text-[#666B78] leading-relaxed">Automatically looks at incoming emails and determines if they should be replied to.</p>
+          <p class="text-xs text-[#8C909C] mt-3">Used 12 times</p>
+        </div>
+        <!-- Dark card -->
+        <div class="bg-[#111318] rounded-xl border border-[#1E2027] p-5 text-white">
+          <div class="w-10 h-10 bg-[#1E2027] rounded-xl flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-[#818CF8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+          </div>
+          <h5 class="font-semibold text-sm mb-1">AI Model Card</h5>
+          <p class="text-xs text-[#666B78] leading-relaxed">Dark surface variant for AI/model contexts and dashboard widgets.</p>
+          <div class="flex items-center gap-1.5 mt-3">
+            <span class="w-1.5 h-1.5 bg-[#10B981] rounded-full"></span>
+            <span class="text-xs text-[#666B78]">Connected</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+        <div class="preview-wrap !p-4">
+          <p class="text-xs text-[#8C909C] mb-1">Total DAU</p>
+          <p class="text-2xl font-bold text-[#09090B]">24,891</p>
+          <span class="inline-flex items-center gap-1 text-xs font-medium text-[#065F46] bg-[#D1FAE5] px-1.5 py-0.5 rounded-full mt-1">+20%</span>
+        </div>
+        <div class="preview-wrap !p-4">
+          <p class="text-xs text-[#8C909C] mb-1">Workflows</p>
+          <p class="text-2xl font-bold text-[#09090B]">142</p>
+          <span class="inline-flex items-center gap-1 text-xs font-medium text-[#065F46] bg-[#D1FAE5] px-1.5 py-0.5 rounded-full mt-1">+8%</span>
+        </div>
+        <div class="preview-wrap !p-4">
+          <p class="text-xs text-[#8C909C] mb-1">Integrations</p>
+          <p class="text-2xl font-bold text-[#09090B]">7</p>
+          <span class="inline-flex items-center gap-1 text-xs font-medium text-[#666B78] bg-[#F4F4F5] px-1.5 py-0.5 rounded-full mt-1">stable</span>
+        </div>
+        <div class="preview-wrap !p-4">
+          <p class="text-xs text-[#8C909C] mb-1">Messages / mo</p>
+          <p class="text-2xl font-bold text-[#09090B]">20</p>
+          <span class="inline-flex items-center gap-1 text-xs font-medium text-[#92400E] bg-[#FEF3C7] px-1.5 py-0.5 rounded-full mt-1">Near limit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LISTS ═══ -->
+    <section id="lists" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Lists</h2>
+      <p class="text-sm text-[#666B78] mb-6">Navigation lists, data lists, and icon lists for sidebar and content areas.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Nav list -->
+        <div class="bg-[#111318] rounded-xl p-3">
+          <p class="text-xs text-[#666B78] uppercase tracking-wider font-semibold px-3 mb-2">Sidebar navigation</p>
+          <nav class="space-y-0.5">
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-[#1E2027] rounded-lg cursor-pointer">
+              <svg class="w-4 h-4 text-[#666B78]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+              New chat
+            </a>
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Workflows
+            </a>
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+              Search
+            </a>
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Meetings
+            </a>
+          </nav>
+        </div>
+        <!-- Data list with meta -->
+        <div class="bg-white rounded-xl border border-[#E4E4E7]">
+          <div class="px-4 py-3 border-b border-[#E4E4E7]">
+            <p class="text-sm font-semibold text-[#111318]">Connected integrations</p>
+          </div>
+          <ul class="divide-y divide-[#F4F4F5]">
+            <li class="flex items-center justify-between px-4 py-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#EEF2FF] rounded-lg flex items-center justify-center text-lg">📅</div>
+                <div>
+                  <p class="text-sm font-medium text-[#111318]">Google Calendar</p>
+                  <p class="text-xs text-[#8C909C]">alexsmith@gmail.com</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-[#D1FAE5] text-[#065F46] rounded-full"><span class="w-1.5 h-1.5 bg-[#10B981] rounded-full"></span>Active</span>
+            </li>
+            <li class="flex items-center justify-between px-4 py-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#F4F4F5] rounded-lg flex items-center justify-center text-lg">🌐</div>
+                <div>
+                  <p class="text-sm font-medium text-[#111318]">Demo Website</p>
+                  <p class="text-xs text-[#8C909C]">Demo integration</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-[#D1FAE5] text-[#065F46] rounded-full"><span class="w-1.5 h-1.5 bg-[#10B981] rounded-full"></span>Active</span>
+            </li>
+            <li class="flex items-center justify-between px-4 py-3 opacity-50">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#F4F4F5] rounded-lg flex items-center justify-center text-lg">📁</div>
+                <div>
+                  <p class="text-sm font-medium text-[#111318]">Google Drive</p>
+                  <p class="text-xs text-[#8C909C]">Not connected</p>
+                </div>
+              </div>
+              <button class="text-xs font-medium text-[#4F46E5] hover:text-[#4338CA]">Connect</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TABLES ═══ -->
+    <section id="tables" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Tables</h2>
+      <p class="text-sm text-[#666B78] mb-6">Data tables with sortable headers, row hover, and inline badges.</p>
+      <div class="preview-wrap !p-0 overflow-hidden">
+        <div class="px-5 py-4 border-b border-[#E4E4E7] flex items-center justify-between">
+          <p class="font-semibold text-sm text-[#111318]">Action items</p>
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">+ Add item</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead>
+              <tr class="border-b border-[#E4E4E7] bg-[#FAFAFA]">
+                <th class="py-3 px-5 text-xs font-semibold text-[#8C909C] uppercase tracking-wider">Task</th>
+                <th class="py-3 px-5 text-xs font-semibold text-[#8C909C] uppercase tracking-wider">Owner</th>
+                <th class="py-3 px-5 text-xs font-semibold text-[#8C909C] uppercase tracking-wider">Deadline</th>
+                <th class="py-3 px-5 text-xs font-semibold text-[#8C909C] uppercase tracking-wider">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[#F4F4F5] hover:bg-[#FAFAFA] transition-colors">
+                <td class="py-3.5 px-5 text-[#111318] font-medium">Review initial wireframes and finalize tech stack</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Person B</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Friday, Feb 20</td>
+                <td class="py-3.5 px-5"><span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-[#FEF3C7] text-[#92400E] rounded-full">In progress</span></td>
+              </tr>
+              <tr class="border-b border-[#F4F4F5] hover:bg-[#FAFAFA] transition-colors">
+                <td class="py-3.5 px-5 text-[#111318] font-medium">Sync with Design Team re technical constraints</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Person B</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Tuesday, Feb 17</td>
+                <td class="py-3.5 px-5"><span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-[#D1FAE5] text-[#065F46] rounded-full">Done</span></td>
+              </tr>
+              <tr class="hover:bg-[#FAFAFA] transition-colors">
+                <td class="py-3.5 px-5 text-[#111318] font-medium">Submit formal Technical Proposal</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Person B</td>
+                <td class="py-3.5 px-5 text-[#666B78]">Thursday, EOD</td>
+                <td class="py-3.5 px-5"><span class="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-[#F4F4F5] text-[#666B78] rounded-full">Not started</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <section id="navigation" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Navigation</h2>
+      <p class="text-sm text-[#666B78] mb-6">Sidebar pattern used in AI product shells.</p>
+      <div class="preview-wrap-dark rounded-xl overflow-hidden h-80 flex">
+        <!-- Sidebar -->
+        <div class="w-48 bg-[#09090B] flex flex-col h-full p-3 gap-1 shrink-0">
+          <div class="flex items-center gap-2 px-2 py-3 mb-1">
+            <div class="w-6 h-6 bg-[#4F46E5] rounded flex items-center justify-center text-white text-xs font-bold">M</div>
+            <span class="text-white text-sm font-semibold">AS Mobbin</span>
+          </div>
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            New chat
+          </a>
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded-md cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-[#818CF8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Workflows
+          </a>
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+            Search
+          </a>
+          <div class="border-t border-[#1E2027] my-1"></div>
+          <p class="text-[10px] text-[#4D515C] uppercase tracking-wider font-semibold px-2 mb-0.5">Folders</p>
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+            Demo folder
+          </a>
+          <div class="mt-auto">
+            <div class="bg-[#1E2027] rounded-lg p-2.5 mx-0">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-1.5 h-1.5 bg-[#F59E0B] rounded-full"></div>
+                <p class="text-[10px] text-[#B5B8C1] font-medium">10 meetings left</p>
+              </div>
+              <button class="w-full py-1 bg-white text-[#09090B] text-[10px] font-semibold rounded">Upgrade</button>
+            </div>
+          </div>
+        </div>
+        <!-- Content area placeholder -->
+        <div class="flex-1 bg-[#111318] flex items-center justify-center">
+          <p class="text-[#4D515C] text-xs">← Sidebar component</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CHAT INTERFACE ═══ -->
+    <section id="chat" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Chat Interface</h2>
+      <p class="text-sm text-[#666B78] mb-6">AI conversational UI patterns — bubbles, citations, typing indicator, and input bar.</p>
+      <div class="preview-wrap max-w-lg">
+        <!-- Chat messages -->
+        <div class="space-y-4 mb-4">
+          <!-- AI message -->
+          <div class="flex gap-2.5">
+            <div class="w-7 h-7 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+            </div>
+            <div class="max-w-[85%] px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl rounded-bl-sm text-sm text-[#1E2027] shadow-sm">
+              <p>Here is a summary of agreed action items from the kickoff meeting:</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li class="flex gap-1">• Goal: +20% DAU</li>
+                <li class="flex gap-1">• Strategy: serverless infra, API gateway</li>
+              </ul>
+              <div class="flex flex-wrap gap-1 mt-2.5">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium bg-[#F4F4F5] text-[#666B78] rounded cursor-pointer hover:bg-[#E4E4E7] transition-colors">MINUTES OF MEETING...</span>
+              </div>
+            </div>
+          </div>
+          <!-- User message -->
+          <div class="flex justify-end">
+            <div class="max-w-[70%] px-4 py-2.5 bg-[#4F46E5] text-white rounded-2xl rounded-br-sm text-sm">
+              Can you turn this into a follow-up email?
+            </div>
+          </div>
+          <!-- AI typing -->
+          <div class="flex gap-2.5">
+            <div class="w-7 h-7 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+            </div>
+            <div class="px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl rounded-bl-sm shadow-sm">
+              <div class="flex gap-1 items-center h-4">
+                <div class="w-1.5 h-1.5 bg-[#8C909C] rounded-full animate-bounce" style="animation-delay:0ms"></div>
+                <div class="w-1.5 h-1.5 bg-[#8C909C] rounded-full animate-bounce" style="animation-delay:150ms"></div>
+                <div class="w-1.5 h-1.5 bg-[#8C909C] rounded-full animate-bounce" style="animation-delay:300ms"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Input bar -->
+        <div class="flex items-center gap-2 px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl shadow-sm">
+          <svg class="w-4 h-4 text-[#F59E0B] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10h7l-9 13v-9H4l9-13v9z"/></svg>
+          <input type="text" placeholder="What would you like to do?" class="flex-1 text-sm text-[#111318] placeholder:text-[#8C909C] focus:outline-none" />
+          <button class="w-8 h-8 bg-[#4F46E5] rounded-full flex items-center justify-center hover:bg-[#4338CA] transition-colors">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <pre class="code-block mt-4"><span class="token-class">&lt;!-- AI chat bubble --&gt;</span>
+<span class="token-attr">&lt;div</span> class=<span class="token-str">"max-w-[85%] px-4 py-3 bg-white border border-mw-surface-border
+     rounded-2xl rounded-bl-sm text-sm text-mw-ink-800 shadow-xs"</span><span class="token-attr">&gt;</span>
+  Message content...
+<span class="token-attr">&lt;/div&gt;</span>
+
+<span class="token-class">&lt;!-- User chat bubble --&gt;</span>
+<span class="token-attr">&lt;div</span> class=<span class="token-str">"max-w-[70%] ml-auto px-4 py-2.5 bg-mw-primary-600 text-white
+     rounded-2xl rounded-br-sm text-sm"</span><span class="token-attr">&gt;</span>
+  User message...
+<span class="token-attr">&lt;/div&gt;</span></pre>
+    </section>
+
+    <!-- ═══ LAYOUTS ═══ -->
+    <section id="layouts" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">Layouts</h2>
+      <p class="text-sm text-[#666B78] mb-6">Responsive two- and three-column grids for interactive content areas.</p>
+
+      <!-- Two column -->
+      <h3 class="text-base font-semibold text-[#111318] mb-3">Two-column (content + panel)</h3>
+      <div class="preview-wrap mb-4">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 h-40">
+          <div class="bg-[#EEF2FF] rounded-xl border-2 border-dashed border-[#A5B4FC] flex items-center justify-center">
+            <span class="text-sm text-[#4F46E5] font-medium">Main content</span>
+          </div>
+          <div class="bg-[#FEF3C7] rounded-xl border-2 border-dashed border-[#FCD34D] flex items-center justify-center">
+            <span class="text-sm text-[#D97706] font-medium">Side panel (300px)</span>
+          </div>
+        </div>
+      </div>
+      <pre class="code-block mb-6"><span class="token-attr">&lt;div</span> class=<span class="token-str">"grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6"</span><span class="token-attr">&gt;</span>
+  <span class="token-attr">&lt;main&gt;</span>Main content<span class="token-attr">&lt;/main&gt;</span>
+  <span class="token-attr">&lt;aside&gt;</span>Sources / panel<span class="token-attr">&lt;/aside&gt;</span>
+<span class="token-attr">&lt;/div&gt;</span></pre>
+
+      <!-- Three column -->
+      <h3 class="text-base font-semibold text-[#111318] mb-3">Three-column card grid</h3>
+      <div class="preview-wrap mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 h-24">
+          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 1</span></div>
+          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 2</span></div>
+          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 3</span></div>
+        </div>
+      </div>
+      <pre class="code-block"><span class="token-attr">&lt;div</span> class=<span class="token-str">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"</span><span class="token-attr">&gt;</span>
+  <span class="token-attr">&lt;div</span> class=<span class="token-str">"card"</span><span class="token-attr">&gt;</span>Card 1<span class="token-attr">&lt;/div&gt;</span>
+  <span class="token-attr">&lt;div</span> class=<span class="token-str">"card"</span><span class="token-attr">&gt;</span>Card 2<span class="token-attr">&lt;/div&gt;</span>
+  <span class="token-attr">&lt;div</span> class=<span class="token-str">"card"</span><span class="token-attr">&gt;</span>Card 3<span class="token-attr">&lt;/div&gt;</span>
+<span class="token-attr">&lt;/div&gt;</span></pre>
+    </section>
+
+    <!-- ═══ AI DASHBOARD ═══ -->
+    <section id="dashboard" class="section-anchor mb-16">
+      <h2 class="text-2xl font-bold text-[#09090B] mb-1">AI Dashboard Layout</h2>
+      <p class="text-sm text-[#666B78] mb-6">Full-shell pattern: sidebar + main content + sources panel. The complete AI product layout.</p>
+      <div class="border border-[#E4E4E7] rounded-2xl overflow-hidden" style="height:480px">
+        <div class="flex h-full">
+          <!-- Sidebar -->
+          <div class="w-44 bg-[#09090B] flex flex-col h-full p-2.5 gap-0.5 shrink-0">
+            <div class="flex items-center gap-2 px-2 py-2.5 mb-1">
+              <div class="w-5 h-5 bg-[#4F46E5] rounded flex items-center justify-center text-white text-xs font-bold">M</div>
+              <span class="text-white text-xs font-semibold">Content-mobbin</span>
+            </div>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">+ New chat</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded-md cursor-pointer">⚡ Workflows</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">🔍 Search</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">📅 Meetings</a>
+            <div class="border-t border-[#1E2027] my-1.5"></div>
+            <p class="text-[9px] text-[#4D515C] uppercase tracking-wider font-semibold px-2 mb-0.5">Today</p>
+            <a class="flex items-center px-2 py-1.5 text-[11px] text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer truncate">Kickoff Follow-up Tasks</a>
+            <div class="mt-auto p-1.5">
+              <div class="bg-[#1E2027] rounded-lg p-2">
+                <p class="text-[9px] text-[#8C909C] mb-1.5">7 meetings left · Upgrade</p>
+                <button class="w-full py-1 bg-white text-[#09090B] text-[9px] font-bold rounded">Upgrade</button>
+              </div>
+            </div>
+          </div>
+          <!-- Chat main -->
+          <div class="flex-1 flex flex-col bg-white min-w-0">
+            <!-- Tab bar -->
+            <div class="flex items-center gap-1 px-4 pt-3 pb-2 border-b border-[#E4E4E7] overflow-x-auto">
+              <button class="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-medium bg-[#09090B] text-white rounded-md shrink-0">All</button>
+              <span class="text-[10px] text-[#8C909C] bg-[#F4F4F5] px-2 py-1 rounded-md cursor-pointer truncate max-w-[120px] shrink-0">MINUTES OF MEETING...</span>
+            </div>
+            <!-- Messages -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-3">
+              <div class="flex gap-2">
+                <div class="w-6 h-6 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <span class="text-white text-[9px] font-bold">AI</span>
+                </div>
+                <div class="flex-1 text-xs text-[#1E2027] bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl rounded-bl-sm px-3 py-2.5">
+                  <p class="font-semibold mb-1">Action items — Project AS Mobbin</p>
+                  <div class="space-y-1 text-[11px] text-[#666B78]">
+                    <p>• Review wireframes — Person B — Feb 20</p>
+                    <p>• Sync Design Team — Person B — Feb 17</p>
+                    <p>• Submit Technical Proposal — Person B — Thu EOD</p>
+                  </div>
+                  <div class="flex gap-1 mt-2">
+                    <span class="text-[9px] bg-[#F4F4F5] text-[#8C909C] px-1.5 py-0.5 rounded cursor-pointer">MINUTES OF MEETING...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Input -->
+            <div class="px-4 py-3 border-t border-[#E4E4E7]">
+              <div class="flex items-center gap-2 px-3 py-2 bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl">
+                <span class="text-[#F59E0B] text-sm">⚡</span>
+                <input type="text" placeholder="What would you like to do?" class="flex-1 text-xs bg-transparent text-[#111318] placeholder:text-[#8C909C] focus:outline-none" />
+                <button class="w-6 h-6 bg-[#4F46E5] rounded-full flex items-center justify-center">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Sources panel -->
+          <div class="w-52 bg-[#FAFAFA] border-l border-[#E4E4E7] p-3 shrink-0 hidden xl:block">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-xs font-semibold text-[#111318]">Sources</p>
+              <button class="text-[#8C909C] hover:text-[#111318]">✕</button>
+            </div>
+            <div class="bg-white border border-[#E4E4E7] rounded-lg p-2.5 flex items-start gap-2 cursor-pointer hover:bg-[#F4F4F5] transition-colors">
+              <span class="text-base mt-0.5">📄</span>
+              <div>
+                <p class="text-[10px] font-medium text-[#111318] leading-tight">MINUTES OF MEETING_ PROJECT AS MOBBIN...</p>
+                <p class="text-[9px] text-[#8C909C] mt-0.5 leading-tight">PROJECT AS MOBBIN KICKOFF</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#E4E4E7] pt-8 mt-8 pb-12">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="font-semibold text-[#09090B]">MidWest Design System</p>
+          <p class="text-sm text-[#8C909C] mt-0.5">v1.0 · Built with Tailwind CSS</p>
+        </div>
+        <div class="flex gap-4 text-sm text-[#8C909C]">
+          <a href="HANDOVER.md" class="hover:text-[#111318] transition-colors">Developer Docs</a>
+          <a href="tailwind.config.js" class="hover:text-[#111318] transition-colors">Config</a>
+          <a href="src/input.css" class="hover:text-[#111318] transition-colors">CSS</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Highlight active TOC link on scroll
+  const sections = document.querySelectorAll('.section-anchor');
+  const links = document.querySelectorAll('.toc-link');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

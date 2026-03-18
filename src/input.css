@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── MidWest Design Tokens (CSS Custom Properties) ── */
+:root {
+  /* Spacing scale */
+  --mw-space-1:  0.25rem;
+  --mw-space-2:  0.5rem;
+  --mw-space-3:  0.75rem;
+  --mw-space-4:  1rem;
+  --mw-space-6:  1.5rem;
+  --mw-space-8:  2rem;
+  --mw-space-12: 3rem;
+  --mw-space-16: 4rem;
+
+  /* Layout */
+  --mw-sidebar-width: 220px;
+  --mw-panel-width:   320px;
+  --mw-content-max:   960px;
+
+  /* Animation */
+  --mw-duration-fast:   100ms;
+  --mw-duration-base:   200ms;
+  --mw-duration-slow:   350ms;
+  --mw-ease:            cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base resets ── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    @apply font-sans text-base text-mw-ink-900 bg-mw-surface-soft antialiased;
+  }
+  h1 { @apply text-4xl font-bold tracking-tight; }
+  h2 { @apply text-3xl font-semibold tracking-tight; }
+  h3 { @apply text-2xl font-semibold; }
+  h4 { @apply text-xl font-semibold; }
+  h5 { @apply text-lg font-medium; }
+  h6 { @apply text-base font-medium; }
+}
+
+/* ── Component layer ── */
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-md
+           transition-all duration-200 cursor-pointer select-none focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-mw-primary-600 text-white hover:bg-mw-primary-700 active:bg-mw-primary-800
+           focus-visible:ring-mw-primary-500;
+  }
+  .btn-secondary {
+    @apply btn bg-mw-surface-muted text-mw-ink-800 border border-mw-surface-border
+           hover:bg-mw-surface-border active:bg-mw-ink-100
+           focus-visible:ring-mw-ink-400;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-mw-ink-700 hover:bg-mw-surface-muted
+           focus-visible:ring-mw-ink-300;
+  }
+  .btn-dark {
+    @apply btn bg-mw-ink-950 text-white hover:bg-mw-ink-800 active:bg-mw-ink-700
+           focus-visible:ring-mw-ink-500;
+  }
+  .btn-danger {
+    @apply btn bg-mw-danger text-white hover:bg-mw-danger-dark
+           focus-visible:ring-mw-danger;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-xs rounded; }
+  .btn-lg { @apply px-6 py-3 text-base rounded-lg; }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl border border-mw-surface-border shadow-sm overflow-hidden;
+  }
+  .card-elevated {
+    @apply card shadow-md hover:shadow-lg transition-shadow duration-200;
+  }
+  .card-flat {
+    @apply bg-mw-surface-soft rounded-xl border border-mw-surface-border;
+  }
+  .card-dark {
+    @apply bg-mw-ink-900 rounded-xl border border-mw-ink-800 text-white;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full;
+  }
+  .badge-primary { @apply badge bg-mw-primary-100 text-mw-primary-700; }
+  .badge-accent   { @apply badge bg-mw-accent-100 text-mw-accent-700; }
+  .badge-success  { @apply badge bg-mw-success-light text-mw-success-dark; }
+  .badge-danger   { @apply badge bg-mw-danger-light text-mw-danger-dark; }
+  .badge-warning  { @apply badge bg-mw-warning-light text-mw-warning-dark; }
+  .badge-neutral  { @apply badge bg-mw-ink-100 text-mw-ink-600; }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-white border border-mw-surface-border rounded-md
+           text-mw-ink-900 placeholder:text-mw-ink-400
+           focus:outline-none focus:ring-2 focus:ring-mw-primary-500 focus:border-transparent
+           disabled:bg-mw-surface-muted disabled:text-mw-ink-400 disabled:cursor-not-allowed
+           transition-shadow duration-150;
+  }
+  .input-search {
+    @apply input pl-9;
+  }
+  .label {
+    @apply block text-sm font-medium text-mw-ink-700 mb-1;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    @apply w-[220px] h-screen bg-mw-ink-950 flex flex-col overflow-hidden flex-shrink-0;
+  }
+  .sidebar-item {
+    @apply flex items-center gap-2.5 px-3 py-2 text-sm text-mw-ink-300 rounded-md mx-2
+           hover:bg-mw-ink-800 hover:text-white transition-colors duration-150 cursor-pointer;
+  }
+  .sidebar-item-active {
+    @apply sidebar-item bg-mw-ink-800 text-white;
+  }
+
+  /* Chat bubble */
+  .chat-bubble-user {
+    @apply max-w-[70%] ml-auto px-4 py-2.5 bg-mw-primary-600 text-white rounded-2xl rounded-br-sm text-sm;
+  }
+  .chat-bubble-ai {
+    @apply max-w-[85%] px-4 py-3 bg-white border border-mw-surface-border rounded-2xl rounded-bl-sm text-sm text-mw-ink-800 shadow-xs;
+  }
+  .chat-input-bar {
+    @apply flex items-center gap-2 px-4 py-3 bg-white border border-mw-surface-border rounded-2xl shadow-sm;
+  }
+
+  /* Table */
+  .table-mw {
+    @apply w-full text-sm text-left;
+  }
+  .table-mw thead tr {
+    @apply border-b border-mw-surface-border;
+  }
+  .table-mw thead th {
+    @apply py-3 px-4 text-xs font-semibold text-mw-ink-500 uppercase tracking-wider;
+  }
+  .table-mw tbody tr {
+    @apply border-b border-mw-surface-border last:border-0 hover:bg-mw-surface-soft transition-colors;
+  }
+  .table-mw tbody td {
+    @apply py-3.5 px-4 text-mw-ink-800;
+  }
+
+  /* Section layouts */
+  .layout-two-col {
+    @apply grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_340px)] gap-6;
+  }
+  .layout-three-col {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  .layout-sidebar-content {
+    @apply flex h-screen overflow-hidden;
+  }
+
+  /* Icon container */
+  .icon-container {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0;
+  }
+
+  /* Source tag / citation chip */
+  .source-chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-2xs font-medium
+           bg-mw-ink-100 text-mw-ink-500 rounded-sm cursor-pointer
+           hover:bg-mw-ink-200 transition-colors;
+  }
+
+  /* Divider */
+  .divider { @apply border-t border-mw-surface-border my-4; }
+  .divider-dark { @apply border-t border-mw-ink-800 my-4; }
+}

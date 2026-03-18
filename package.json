@@ -1,0 +1,12 @@
+{
+  "name": "midwest-design-system",
+  "version": "1.0.0",
+  "description": "MidWest Design System — Tailwind CSS component library for AI-powered products",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
