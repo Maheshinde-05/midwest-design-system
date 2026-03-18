@@ -42,7 +42,15 @@
             '2xs': ['0.625rem', { lineHeight: '1rem' }],
           },
           borderRadius: {
-            'xs': '0.125rem',
+            'xs':    '0.0625rem',
+            'sm':    '0.125rem',
+            DEFAULT: '0.25rem',
+            'md':    '0.25rem',
+            'lg':    '0.25rem',
+            'xl':    '0.25rem',
+            '2xl':   '0.25rem',
+            '3xl':   '0.25rem',
+            'full':  '9999px',
           },
           boxShadow: {
             'xs': '0 1px 2px 0 rgb(0 0 0 / 0.04)',
@@ -75,7 +83,7 @@
 <!-- Top nav -->
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-[#E4E4E7] px-6 py-3 flex items-center justify-between">
   <div class="flex items-center gap-3">
-    <div class="w-8 h-8 bg-[#4F46E5] rounded-lg flex items-center justify-center">
+    <div class="w-8 h-8 bg-[#4F46E5] rounded flex items-center justify-center">
       <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"/></svg>
     </div>
     <span class="font-semibold text-base">MidWest Design System</span>
@@ -83,7 +91,7 @@
   </div>
   <div class="flex items-center gap-3">
     <a href="HANDOVER.md" class="text-sm text-[#666B78] hover:text-[#111318] transition-colors">Docs</a>
-    <a href="https://github.com" class="inline-flex items-center gap-1.5 text-sm font-medium bg-[#09090B] text-white px-3 py-1.5 rounded-md hover:bg-[#1E2027] transition-colors">
+    <a href="https://github.com" class="inline-flex items-center gap-1.5 text-sm font-medium bg-[#09090B] text-white px-3 py-1.5 rounded hover:bg-[#1E2027] transition-colors">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       GitHub
     </a>
@@ -129,8 +137,8 @@
       <h1 class="text-5xl font-bold tracking-tight text-[#09090B] mb-4">MidWest<br/>Design System</h1>
       <p class="text-lg text-[#666B78] max-w-lg">A clean, accessible component library for AI-powered products. Tokens, components, and patterns ready for Tailwind CSS.</p>
       <div class="flex gap-3 mt-6">
-        <a href="#tokens" class="inline-flex items-center gap-2 px-4 py-2 bg-[#4F46E5] text-white text-sm font-medium rounded-lg hover:bg-[#4338CA] transition-colors">Get started</a>
-        <a href="HANDOVER.md" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#353840] text-sm font-medium rounded-lg border border-[#E4E4E7] hover:bg-[#F4F4F5] transition-colors">Dev handover docs</a>
+        <a href="#tokens" class="inline-flex items-center gap-2 px-4 py-2 bg-[#4F46E5] text-white text-sm font-medium rounded hover:bg-[#4338CA] transition-colors">Get started</a>
+        <a href="HANDOVER.md" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#353840] text-sm font-medium rounded border border-[#E4E4E7] hover:bg-[#F4F4F5] transition-colors">Dev handover docs</a>
       </div>
     </div>
 
@@ -140,22 +148,22 @@
       <p class="text-sm text-[#666B78] mb-6">All values are defined as Tailwind theme extensions. Use CSS custom properties for runtime theming.</p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded p-4">
           <p class="text-xs font-semibold text-[#8C909C] mb-2">Spacing base</p>
           <p class="text-2xl font-bold text-[#09090B]">4px</p>
           <p class="text-xs text-[#8C909C] mt-1">4pt grid system</p>
         </div>
-        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded p-4">
           <p class="text-xs font-semibold text-[#8C909C] mb-2">Border radius</p>
-          <p class="text-2xl font-bold text-[#09090B]">6px</p>
-          <p class="text-xs text-[#8C909C] mt-1">Default (md: 8px)</p>
+          <p class="text-2xl font-bold text-[#09090B]">4px</p>
+          <p class="text-xs text-[#8C909C] mt-1">Universal base radius</p>
         </div>
-        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded p-4">
           <p class="text-xs font-semibold text-[#8C909C] mb-2">Font family</p>
           <p class="text-2xl font-bold text-[#09090B]">Inter</p>
           <p class="text-xs text-[#8C909C] mt-1">Mono: JetBrains</p>
         </div>
-        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl p-4">
+        <div class="bg-[#FAFAFA] border border-[#E4E4E7] rounded p-4">
           <p class="text-xs font-semibold text-[#8C909C] mb-2">Transition</p>
           <p class="text-2xl font-bold text-[#09090B]">200ms</p>
           <p class="text-xs text-[#8C909C] mt-1">ease-in-out</p>
@@ -169,7 +177,7 @@
   <span class="token-str">'mw-accent'</span>:  { <span class="token-str">500</span>: <span class="token-str">'#F59E0B'</span> ... },
 },
 <span class="token-attr">fontFamily</span>: { <span class="token-str">sans</span>: <span class="token-str">['Inter', 'system-ui']</span>, <span class="token-str">mono</span>: <span class="token-str">['JetBrains Mono']</span> },
-<span class="token-attr">borderRadius</span>: { <span class="token-str">DEFAULT</span>: <span class="token-str">'0.375rem'</span>, <span class="token-str">md</span>: <span class="token-str">'0.5rem'</span>, <span class="token-str">lg</span>: <span class="token-str">'0.75rem'</span>, <span class="token-str">xl</span>: <span class="token-str">'1rem'</span> },</pre>
+<span class="token-attr">borderRadius</span>: { <span class="token-str">DEFAULT</span>: <span class="token-str">'0.25rem'</span>, <span class="token-str">md</span>: <span class="token-str">'0.25rem'</span>, <span class="token-str">lg</span>: <span class="token-str">'0.25rem'</span>, <span class="token-str">xl</span>: <span class="token-str">'0.25rem'</span>, <span class="token-str">full</span>: <span class="token-str">'9999px'</span> },</pre>
     </section>
 
     <!-- ═══ TYPOGRAPHY ═══ -->
@@ -198,33 +206,33 @@
       <div class="mb-6">
         <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">mw-ink (Neutrals)</p>
         <div class="flex gap-1 flex-wrap">
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#F7F7F8] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#EEEFF1]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#D9DBDF]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#B5B8C1]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#8C909C]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#666B78]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4D515C]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#353840]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#1E2027]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#111318]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#09090B]"></div><span class="text-[10px] text-[#8C909C]">950</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#F7F7F8] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#EEEFF1]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#D9DBDF]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#B5B8C1]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#8C909C]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#666B78]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#4D515C]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#353840]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#1E2027]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#111318]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#09090B]"></div><span class="text-[10px] text-[#8C909C]">950</span></div>
         </div>
       </div>
       <!-- Primary -->
       <div class="mb-6">
         <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">mw-primary (Indigo)</p>
         <div class="flex gap-1 flex-wrap">
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#EEF2FF] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#E0E7FF]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#C7D2FE]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#A5B4FC]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#818CF8]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#6366F1]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4F46E5]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#4338CA]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#3730A3]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
-          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded-lg bg-[#312E81]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#EEF2FF] border border-[#E4E4E7]"></div><span class="text-[10px] text-[#8C909C]">50</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#E0E7FF]"></div><span class="text-[10px] text-[#8C909C]">100</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#C7D2FE]"></div><span class="text-[10px] text-[#8C909C]">200</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#A5B4FC]"></div><span class="text-[10px] text-[#8C909C]">300</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#818CF8]"></div><span class="text-[10px] text-[#8C909C]">400</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#6366F1]"></div><span class="text-[10px] text-[#8C909C]">500</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#4F46E5]"></div><span class="text-[10px] text-[#8C909C]">600</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#4338CA]"></div><span class="text-[10px] text-[#8C909C]">700</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#3730A3]"></div><span class="text-[10px] text-[#8C909C]">800</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 rounded bg-[#312E81]"></div><span class="text-[10px] text-[#8C909C]">900</span></div>
         </div>
       </div>
       <!-- Accent + Semantic -->
@@ -232,33 +240,33 @@
         <div>
           <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Accent</p>
           <div class="space-y-1">
-            <div class="h-8 rounded-lg bg-[#FEF3C7]"></div>
-            <div class="h-8 rounded-lg bg-[#F59E0B]"></div>
-            <div class="h-8 rounded-lg bg-[#D97706]"></div>
+            <div class="h-8 rounded bg-[#FEF3C7]"></div>
+            <div class="h-8 rounded bg-[#F59E0B]"></div>
+            <div class="h-8 rounded bg-[#D97706]"></div>
           </div>
         </div>
         <div>
           <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Success</p>
           <div class="space-y-1">
-            <div class="h-8 rounded-lg bg-[#D1FAE5]"></div>
-            <div class="h-8 rounded-lg bg-[#10B981]"></div>
-            <div class="h-8 rounded-lg bg-[#065F46]"></div>
+            <div class="h-8 rounded bg-[#D1FAE5]"></div>
+            <div class="h-8 rounded bg-[#10B981]"></div>
+            <div class="h-8 rounded bg-[#065F46]"></div>
           </div>
         </div>
         <div>
           <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Danger</p>
           <div class="space-y-1">
-            <div class="h-8 rounded-lg bg-[#FEE2E2]"></div>
-            <div class="h-8 rounded-lg bg-[#EF4444]"></div>
-            <div class="h-8 rounded-lg bg-[#991B1B]"></div>
+            <div class="h-8 rounded bg-[#FEE2E2]"></div>
+            <div class="h-8 rounded bg-[#EF4444]"></div>
+            <div class="h-8 rounded bg-[#991B1B]"></div>
           </div>
         </div>
         <div>
           <p class="text-xs font-semibold text-[#666B78] uppercase tracking-wider mb-2">Warning</p>
           <div class="space-y-1">
-            <div class="h-8 rounded-lg bg-[#FEF3C7]"></div>
-            <div class="h-8 rounded-lg bg-[#F59E0B]"></div>
-            <div class="h-8 rounded-lg bg-[#92400E]"></div>
+            <div class="h-8 rounded bg-[#FEF3C7]"></div>
+            <div class="h-8 rounded bg-[#F59E0B]"></div>
+            <div class="h-8 rounded bg-[#92400E]"></div>
           </div>
         </div>
       </div>
@@ -272,33 +280,33 @@
         <div>
           <p class="text-xs text-[#8C909C] mb-3 font-medium">Variants</p>
           <div class="flex flex-wrap gap-3 items-center">
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">Primary</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded-lg hover:bg-[#E4E4E7] transition-colors">Secondary</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#353840] rounded-lg hover:bg-[#F4F4F5] transition-colors">Ghost</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded-lg hover:bg-[#1E2027] transition-colors">Dark</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#EF4444] text-white rounded-lg hover:bg-[#DC2626] transition-colors">Danger</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">Primary</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded hover:bg-[#E4E4E7] transition-colors">Secondary</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#353840] rounded hover:bg-[#F4F4F5] transition-colors">Ghost</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded hover:bg-[#1E2027] transition-colors">Dark</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#EF4444] text-white rounded hover:bg-[#DC2626] transition-colors">Danger</button>
           </div>
         </div>
         <div>
           <p class="text-xs text-[#8C909C] mb-3 font-medium">Sizes</p>
           <div class="flex flex-wrap gap-3 items-center">
-            <button class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-[#4F46E5] text-white rounded-md hover:bg-[#4338CA] transition-colors">Small</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">Default</button>
-            <button class="inline-flex items-center gap-2 px-6 py-3 text-base font-medium bg-[#4F46E5] text-white rounded-xl hover:bg-[#4338CA] transition-colors">Large</button>
+            <button class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">Small</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">Default</button>
+            <button class="inline-flex items-center gap-2 px-6 py-3 text-base font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">Large</button>
           </div>
         </div>
         <div>
           <p class="text-xs text-[#8C909C] mb-3 font-medium">With icons</p>
           <div class="flex flex-wrap gap-3 items-center">
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
               Create workflow
             </button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded-lg hover:bg-[#E4E4E7] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#F4F4F5] text-[#1E2027] border border-[#E4E4E7] rounded hover:bg-[#E4E4E7] transition-colors">
               <svg class="w-4 h-4 text-[#666B78]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
               Download
             </button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded-lg hover:bg-[#1E2027] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#09090B] text-white rounded hover:bg-[#1E2027] transition-colors">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </button>
@@ -307,14 +315,14 @@
         <div>
           <p class="text-xs text-[#8C909C] mb-3 font-medium">States</p>
           <div class="flex flex-wrap gap-3 items-center">
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg opacity-40 cursor-not-allowed">Disabled</button>
-            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded-lg ring-2 ring-offset-2 ring-[#6366F1]">Focused</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded opacity-40 cursor-not-allowed">Disabled</button>
+            <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#4F46E5] text-white rounded ring-2 ring-offset-2 ring-[#6366F1]">Focused</button>
           </div>
         </div>
       </div>
       <pre class="code-block mt-4"><span class="token-class">&lt;!-- Primary button --&gt;</span>
 <span class="token-attr">&lt;button</span> class=<span class="token-str">"inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
-         bg-mw-primary-600 text-white rounded-lg hover:bg-mw-primary-700
+         bg-mw-primary-600 text-white rounded hover:bg-mw-primary-700
          transition-colors focus-visible:ring-2 focus-visible:ring-mw-primary-500"</span><span class="token-attr">&gt;</span>
   Primary
 <span class="token-attr">&lt;/button&gt;</span></pre>
@@ -366,27 +374,27 @@
       <div class="preview-wrap grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Default input</label>
-          <input type="text" placeholder="Type something..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
+          <input type="text" placeholder="Type something..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
         </div>
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Search input</label>
           <div class="relative">
             <svg class="absolute left-3 top-2.5 w-4 h-4 text-[#8C909C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
-            <input type="search" placeholder="Search integrations..." class="w-full pl-9 pr-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
+            <input type="search" placeholder="Search integrations..." class="w-full pl-9 pr-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-shadow" />
           </div>
         </div>
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Error state</label>
-          <input type="text" value="Invalid input" class="w-full px-3 py-2 text-sm bg-white border border-[#EF4444] rounded-lg text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#EF4444] focus:border-transparent" />
+          <input type="text" value="Invalid input" class="w-full px-3 py-2 text-sm bg-white border border-[#EF4444] rounded text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#EF4444] focus:border-transparent" />
           <p class="text-xs text-[#EF4444] mt-1.5">This field is required</p>
         </div>
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Disabled</label>
-          <input type="text" placeholder="Not editable" disabled class="w-full px-3 py-2 text-sm bg-[#F4F4F5] border border-[#E4E4E7] rounded-lg text-[#8C909C] cursor-not-allowed" />
+          <input type="text" placeholder="Not editable" disabled class="w-full px-3 py-2 text-sm bg-[#F4F4F5] border border-[#E4E4E7] rounded text-[#8C909C] cursor-not-allowed" />
         </div>
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Select</label>
-          <select class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent appearance-none cursor-pointer">
+          <select class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded text-[#111318] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent appearance-none cursor-pointer">
             <option>All categories</option>
             <option>Engineering</option>
             <option>Marketing</option>
@@ -394,7 +402,7 @@
         </div>
         <div>
           <label class="block text-sm font-medium text-[#353840] mb-1.5">Textarea</label>
-          <textarea rows="3" placeholder="Write a message..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded-lg text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent resize-none transition-shadow"></textarea>
+          <textarea rows="3" placeholder="Write a message..." class="w-full px-3 py-2 text-sm bg-white border border-[#E4E4E7] rounded text-[#111318] placeholder:text-[#8C909C] focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent resize-none transition-shadow"></textarea>
         </div>
       </div>
     </section>
@@ -405,8 +413,8 @@
       <p class="text-sm text-[#666B78] mb-6">Flexible containers for content, data, and interactive elements.</p>
       <div class="preview-wrap grid grid-cols-1 md:grid-cols-3 gap-4">
         <!-- Default card -->
-        <div class="bg-white rounded-xl border border-[#E4E4E7] shadow-sm p-5">
-          <div class="w-10 h-10 bg-[#EEF2FF] rounded-xl flex items-center justify-center mb-3">
+        <div class="bg-white rounded border border-[#E4E4E7] shadow-sm p-5">
+          <div class="w-10 h-10 bg-[#EEF2FF] rounded flex items-center justify-center mb-3">
             <svg class="w-5 h-5 text-[#4F46E5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <h5 class="font-semibold text-[#111318] text-sm mb-1">Prepare me for meetings</h5>
@@ -414,8 +422,8 @@
           <p class="text-xs text-[#8C909C] mt-3">Used 0 times</p>
         </div>
         <!-- Elevated card -->
-        <div class="bg-white rounded-xl border border-[#E4E4E7] shadow-md hover:shadow-lg transition-shadow p-5 cursor-pointer">
-          <div class="w-10 h-10 bg-[#FEF3C7] rounded-xl flex items-center justify-center mb-3">
+        <div class="bg-white rounded border border-[#E4E4E7] shadow-md hover:shadow-lg transition-shadow p-5 cursor-pointer">
+          <div class="w-10 h-10 bg-[#FEF3C7] rounded flex items-center justify-center mb-3">
             <svg class="w-5 h-5 text-[#D97706]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h5 class="font-semibold text-[#111318] text-sm mb-1">Draft email replies</h5>
@@ -423,8 +431,8 @@
           <p class="text-xs text-[#8C909C] mt-3">Used 12 times</p>
         </div>
         <!-- Dark card -->
-        <div class="bg-[#111318] rounded-xl border border-[#1E2027] p-5 text-white">
-          <div class="w-10 h-10 bg-[#1E2027] rounded-xl flex items-center justify-center mb-3">
+        <div class="bg-[#111318] rounded border border-[#1E2027] p-5 text-white">
+          <div class="w-10 h-10 bg-[#1E2027] rounded flex items-center justify-center mb-3">
             <svg class="w-5 h-5 text-[#818CF8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
           </div>
           <h5 class="font-semibold text-sm mb-1">AI Model Card</h5>
@@ -467,36 +475,36 @@
       <p class="text-sm text-[#666B78] mb-6">Navigation lists, data lists, and icon lists for sidebar and content areas.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Nav list -->
-        <div class="bg-[#111318] rounded-xl p-3">
+        <div class="bg-[#111318] rounded p-3">
           <p class="text-xs text-[#666B78] uppercase tracking-wider font-semibold px-3 mb-2">Sidebar navigation</p>
           <nav class="space-y-0.5">
-            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-[#1E2027] rounded-lg cursor-pointer">
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-[#1E2027] rounded cursor-pointer">
               <svg class="w-4 h-4 text-[#666B78]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
               New chat
             </a>
-            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               Workflows
             </a>
-            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
               Search
             </a>
-            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded-lg cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
+            <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#B5B8C1] rounded cursor-pointer hover:bg-[#1E2027] hover:text-white transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               Meetings
             </a>
           </nav>
         </div>
         <!-- Data list with meta -->
-        <div class="bg-white rounded-xl border border-[#E4E4E7]">
+        <div class="bg-white rounded border border-[#E4E4E7]">
           <div class="px-4 py-3 border-b border-[#E4E4E7]">
             <p class="text-sm font-semibold text-[#111318]">Connected integrations</p>
           </div>
           <ul class="divide-y divide-[#F4F4F5]">
             <li class="flex items-center justify-between px-4 py-3">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#EEF2FF] rounded-lg flex items-center justify-center text-lg">📅</div>
+                <div class="w-8 h-8 bg-[#EEF2FF] rounded flex items-center justify-center text-lg">📅</div>
                 <div>
                   <p class="text-sm font-medium text-[#111318]">Google Calendar</p>
                   <p class="text-xs text-[#8C909C]">alexsmith@gmail.com</p>
@@ -506,7 +514,7 @@
             </li>
             <li class="flex items-center justify-between px-4 py-3">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#F4F4F5] rounded-lg flex items-center justify-center text-lg">🌐</div>
+                <div class="w-8 h-8 bg-[#F4F4F5] rounded flex items-center justify-center text-lg">🌐</div>
                 <div>
                   <p class="text-sm font-medium text-[#111318]">Demo Website</p>
                   <p class="text-xs text-[#8C909C]">Demo integration</p>
@@ -516,7 +524,7 @@
             </li>
             <li class="flex items-center justify-between px-4 py-3 opacity-50">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#F4F4F5] rounded-lg flex items-center justify-center text-lg">📁</div>
+                <div class="w-8 h-8 bg-[#F4F4F5] rounded flex items-center justify-center text-lg">📁</div>
                 <div>
                   <p class="text-sm font-medium text-[#111318]">Google Drive</p>
                   <p class="text-xs text-[#8C909C]">Not connected</p>
@@ -536,7 +544,7 @@
       <div class="preview-wrap !p-0 overflow-hidden">
         <div class="px-5 py-4 border-b border-[#E4E4E7] flex items-center justify-between">
           <p class="font-semibold text-sm text-[#111318]">Action items</p>
-          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-colors">+ Add item</button>
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#4F46E5] text-white rounded hover:bg-[#4338CA] transition-colors">+ Add item</button>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-left">
@@ -577,33 +585,33 @@
     <section id="navigation" class="section-anchor mb-16">
       <h2 class="text-2xl font-bold text-[#09090B] mb-1">Navigation</h2>
       <p class="text-sm text-[#666B78] mb-6">Sidebar pattern used in AI product shells.</p>
-      <div class="preview-wrap-dark rounded-xl overflow-hidden h-80 flex">
+      <div class="preview-wrap-dark rounded overflow-hidden h-80 flex">
         <!-- Sidebar -->
         <div class="w-48 bg-[#09090B] flex flex-col h-full p-3 gap-1 shrink-0">
           <div class="flex items-center gap-2 px-2 py-3 mb-1">
             <div class="w-6 h-6 bg-[#4F46E5] rounded flex items-center justify-center text-white text-xs font-bold">M</div>
             <span class="text-white text-sm font-semibold">AS Mobbin</span>
           </div>
-          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
             New chat
           </a>
-          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded-md cursor-pointer">
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded cursor-pointer">
             <svg class="w-3.5 h-3.5 text-[#818CF8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             Workflows
           </a>
-          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
             Search
           </a>
           <div class="border-t border-[#1E2027] my-1"></div>
           <p class="text-[10px] text-[#4D515C] uppercase tracking-wider font-semibold px-2 mb-0.5">Folders</p>
-          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
+          <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] hover:text-white transition-colors cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
             Demo folder
           </a>
           <div class="mt-auto">
-            <div class="bg-[#1E2027] rounded-lg p-2.5 mx-0">
+            <div class="bg-[#1E2027] rounded p-2.5 mx-0">
               <div class="flex items-center gap-2 mb-2">
                 <div class="w-1.5 h-1.5 bg-[#F59E0B] rounded-full"></div>
                 <p class="text-[10px] text-[#B5B8C1] font-medium">10 meetings left</p>
@@ -631,7 +639,7 @@
             <div class="w-7 h-7 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
             </div>
-            <div class="max-w-[85%] px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl rounded-bl-sm text-sm text-[#1E2027] shadow-sm">
+            <div class="max-w-[85%] px-4 py-3 bg-white border border-[#E4E4E7] rounded rounded-bl-[2px] text-sm text-[#1E2027] shadow-sm">
               <p>Here is a summary of agreed action items from the kickoff meeting:</p>
               <ul class="mt-2 space-y-1 text-sm">
                 <li class="flex gap-1">• Goal: +20% DAU</li>
@@ -644,7 +652,7 @@
           </div>
           <!-- User message -->
           <div class="flex justify-end">
-            <div class="max-w-[70%] px-4 py-2.5 bg-[#4F46E5] text-white rounded-2xl rounded-br-sm text-sm">
+            <div class="max-w-[70%] px-4 py-2.5 bg-[#4F46E5] text-white rounded rounded-br-[2px] text-sm">
               Can you turn this into a follow-up email?
             </div>
           </div>
@@ -653,7 +661,7 @@
             <div class="w-7 h-7 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0">
               <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
             </div>
-            <div class="px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl rounded-bl-sm shadow-sm">
+            <div class="px-4 py-3 bg-white border border-[#E4E4E7] rounded rounded-bl-[2px] shadow-sm">
               <div class="flex gap-1 items-center h-4">
                 <div class="w-1.5 h-1.5 bg-[#8C909C] rounded-full animate-bounce" style="animation-delay:0ms"></div>
                 <div class="w-1.5 h-1.5 bg-[#8C909C] rounded-full animate-bounce" style="animation-delay:150ms"></div>
@@ -663,7 +671,7 @@
           </div>
         </div>
         <!-- Input bar -->
-        <div class="flex items-center gap-2 px-4 py-3 bg-white border border-[#E4E4E7] rounded-2xl shadow-sm">
+        <div class="flex items-center gap-2 px-4 py-3 bg-white border border-[#E4E4E7] rounded shadow-sm">
           <svg class="w-4 h-4 text-[#F59E0B] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10h7l-9 13v-9H4l9-13v9z"/></svg>
           <input type="text" placeholder="What would you like to do?" class="flex-1 text-sm text-[#111318] placeholder:text-[#8C909C] focus:outline-none" />
           <button class="w-8 h-8 bg-[#4F46E5] rounded-full flex items-center justify-center hover:bg-[#4338CA] transition-colors">
@@ -673,13 +681,13 @@
       </div>
       <pre class="code-block mt-4"><span class="token-class">&lt;!-- AI chat bubble --&gt;</span>
 <span class="token-attr">&lt;div</span> class=<span class="token-str">"max-w-[85%] px-4 py-3 bg-white border border-mw-surface-border
-     rounded-2xl rounded-bl-sm text-sm text-mw-ink-800 shadow-xs"</span><span class="token-attr">&gt;</span>
+     rounded rounded-bl-[2px] text-sm text-mw-ink-800 shadow-xs"</span><span class="token-attr">&gt;</span>
   Message content...
 <span class="token-attr">&lt;/div&gt;</span>
 
 <span class="token-class">&lt;!-- User chat bubble --&gt;</span>
 <span class="token-attr">&lt;div</span> class=<span class="token-str">"max-w-[70%] ml-auto px-4 py-2.5 bg-mw-primary-600 text-white
-     rounded-2xl rounded-br-sm text-sm"</span><span class="token-attr">&gt;</span>
+     rounded rounded-br-[2px] text-sm"</span><span class="token-attr">&gt;</span>
   User message...
 <span class="token-attr">&lt;/div&gt;</span></pre>
     </section>
@@ -693,10 +701,10 @@
       <h3 class="text-base font-semibold text-[#111318] mb-3">Two-column (content + panel)</h3>
       <div class="preview-wrap mb-4">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 h-40">
-          <div class="bg-[#EEF2FF] rounded-xl border-2 border-dashed border-[#A5B4FC] flex items-center justify-center">
+          <div class="bg-[#EEF2FF] rounded border-2 border-dashed border-[#A5B4FC] flex items-center justify-center">
             <span class="text-sm text-[#4F46E5] font-medium">Main content</span>
           </div>
-          <div class="bg-[#FEF3C7] rounded-xl border-2 border-dashed border-[#FCD34D] flex items-center justify-center">
+          <div class="bg-[#FEF3C7] rounded border-2 border-dashed border-[#FCD34D] flex items-center justify-center">
             <span class="text-sm text-[#D97706] font-medium">Side panel (300px)</span>
           </div>
         </div>
@@ -710,9 +718,9 @@
       <h3 class="text-base font-semibold text-[#111318] mb-3">Three-column card grid</h3>
       <div class="preview-wrap mb-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 h-24">
-          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 1</span></div>
-          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 2</span></div>
-          <div class="bg-[#D1FAE5] rounded-xl border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 3</span></div>
+          <div class="bg-[#D1FAE5] rounded border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 1</span></div>
+          <div class="bg-[#D1FAE5] rounded border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 2</span></div>
+          <div class="bg-[#D1FAE5] rounded border-2 border-dashed border-[#6EE7B7] flex items-center justify-center"><span class="text-xs text-[#065F46] font-medium">Column 3</span></div>
         </div>
       </div>
       <pre class="code-block"><span class="token-attr">&lt;div</span> class=<span class="token-str">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"</span><span class="token-attr">&gt;</span>
@@ -726,7 +734,7 @@
     <section id="dashboard" class="section-anchor mb-16">
       <h2 class="text-2xl font-bold text-[#09090B] mb-1">AI Dashboard Layout</h2>
       <p class="text-sm text-[#666B78] mb-6">Full-shell pattern: sidebar + main content + sources panel. The complete AI product layout.</p>
-      <div class="border border-[#E4E4E7] rounded-2xl overflow-hidden" style="height:480px">
+      <div class="border border-[#E4E4E7] rounded overflow-hidden" style="height:480px">
         <div class="flex h-full">
           <!-- Sidebar -->
           <div class="w-44 bg-[#09090B] flex flex-col h-full p-2.5 gap-0.5 shrink-0">
@@ -734,15 +742,15 @@
               <div class="w-5 h-5 bg-[#4F46E5] rounded flex items-center justify-center text-white text-xs font-bold">M</div>
               <span class="text-white text-xs font-semibold">Content-mobbin</span>
             </div>
-            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">+ New chat</a>
-            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded-md cursor-pointer">⚡ Workflows</a>
-            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">🔍 Search</a>
-            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer">📅 Meetings</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] transition-colors cursor-pointer">+ New chat</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-white bg-[#1E2027] rounded cursor-pointer">⚡ Workflows</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] transition-colors cursor-pointer">🔍 Search</a>
+            <a class="flex items-center gap-2 px-2 py-1.5 text-xs text-[#B5B8C1] rounded hover:bg-[#1E2027] transition-colors cursor-pointer">📅 Meetings</a>
             <div class="border-t border-[#1E2027] my-1.5"></div>
             <p class="text-[9px] text-[#4D515C] uppercase tracking-wider font-semibold px-2 mb-0.5">Today</p>
-            <a class="flex items-center px-2 py-1.5 text-[11px] text-[#B5B8C1] rounded-md hover:bg-[#1E2027] transition-colors cursor-pointer truncate">Kickoff Follow-up Tasks</a>
+            <a class="flex items-center px-2 py-1.5 text-[11px] text-[#B5B8C1] rounded hover:bg-[#1E2027] transition-colors cursor-pointer truncate">Kickoff Follow-up Tasks</a>
             <div class="mt-auto p-1.5">
-              <div class="bg-[#1E2027] rounded-lg p-2">
+              <div class="bg-[#1E2027] rounded p-2">
                 <p class="text-[9px] text-[#8C909C] mb-1.5">7 meetings left · Upgrade</p>
                 <button class="w-full py-1 bg-white text-[#09090B] text-[9px] font-bold rounded">Upgrade</button>
               </div>
@@ -752,8 +760,8 @@
           <div class="flex-1 flex flex-col bg-white min-w-0">
             <!-- Tab bar -->
             <div class="flex items-center gap-1 px-4 pt-3 pb-2 border-b border-[#E4E4E7] overflow-x-auto">
-              <button class="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-medium bg-[#09090B] text-white rounded-md shrink-0">All</button>
-              <span class="text-[10px] text-[#8C909C] bg-[#F4F4F5] px-2 py-1 rounded-md cursor-pointer truncate max-w-[120px] shrink-0">MINUTES OF MEETING...</span>
+              <button class="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-medium bg-[#09090B] text-white rounded shrink-0">All</button>
+              <span class="text-[10px] text-[#8C909C] bg-[#F4F4F5] px-2 py-1 rounded cursor-pointer truncate max-w-[120px] shrink-0">MINUTES OF MEETING...</span>
             </div>
             <!-- Messages -->
             <div class="flex-1 overflow-y-auto p-4 space-y-3">
@@ -761,7 +769,7 @@
                 <div class="w-6 h-6 bg-[#4F46E5] rounded-full flex items-center justify-center shrink-0 mt-0.5">
                   <span class="text-white text-[9px] font-bold">AI</span>
                 </div>
-                <div class="flex-1 text-xs text-[#1E2027] bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl rounded-bl-sm px-3 py-2.5">
+                <div class="flex-1 text-xs text-[#1E2027] bg-[#FAFAFA] border border-[#E4E4E7] rounded rounded-bl-sm px-3 py-2.5">
                   <p class="font-semibold mb-1">Action items — Project AS Mobbin</p>
                   <div class="space-y-1 text-[11px] text-[#666B78]">
                     <p>• Review wireframes — Person B — Feb 20</p>
@@ -776,7 +784,7 @@
             </div>
             <!-- Input -->
             <div class="px-4 py-3 border-t border-[#E4E4E7]">
-              <div class="flex items-center gap-2 px-3 py-2 bg-[#FAFAFA] border border-[#E4E4E7] rounded-xl">
+              <div class="flex items-center gap-2 px-3 py-2 bg-[#FAFAFA] border border-[#E4E4E7] rounded">
                 <span class="text-[#F59E0B] text-sm">⚡</span>
                 <input type="text" placeholder="What would you like to do?" class="flex-1 text-xs bg-transparent text-[#111318] placeholder:text-[#8C909C] focus:outline-none" />
                 <button class="w-6 h-6 bg-[#4F46E5] rounded-full flex items-center justify-center">
@@ -791,7 +799,7 @@
               <p class="text-xs font-semibold text-[#111318]">Sources</p>
               <button class="text-[#8C909C] hover:text-[#111318]">✕</button>
             </div>
-            <div class="bg-white border border-[#E4E4E7] rounded-lg p-2.5 flex items-start gap-2 cursor-pointer hover:bg-[#F4F4F5] transition-colors">
+            <div class="bg-white border border-[#E4E4E7] rounded p-2.5 flex items-start gap-2 cursor-pointer hover:bg-[#F4F4F5] transition-colors">
               <span class="text-base mt-0.5">📄</span>
               <div>
                 <p class="text-[10px] font-medium text-[#111318] leading-tight">MINUTES OF MEETING_ PROJECT AS MOBBIN...</p>
